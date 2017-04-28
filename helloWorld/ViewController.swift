@@ -10,9 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+	@IBOutlet var _myLabel: UILabel!
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
+		_myLabel.text = "goodbye world"
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -21,5 +23,14 @@ class ViewController: UIViewController {
 	}
 
 
+	@IBAction func buttonTapped(_ sender: UIButton) {
+		_myLabel.text = "Button Tapped"
+	}
+	
+	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+		if let touch = touches.first {
+			_myLabel.center = touch.location(in: view)
+		}
+	}
 }
 
